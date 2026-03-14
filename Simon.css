@@ -41,12 +41,10 @@ body{
 .userflash{
     background-color: green;
 } 
-
-/* Red background flash effect */
-.errorflash {
+.wrongflash {
     background-color: red;
-    /*transition: background-color 0.25s ease;*/
 }
+
 
 /* Overlay for Flash Effect */
 .overlay {
@@ -67,6 +65,11 @@ body{
 
 .userflash .overlay {
     background-color: green;
+    opacity: 0.7;
+}
+
+.wrongflash .overlay {
+    background-color: red;
     opacity: 0.7;
 }
 
@@ -100,3 +103,18 @@ body{
     cursor: pointer;
 }
 
+@media (max-width: 600px){
+    .btn{
+        height: 30vw;
+        width: 30vw;
+        margin: 0.7rem;
+    }
+
+    h1{
+        font-size: 1.8rem;
+    }
+
+    h2{
+        font-size: 1.2rem;
+    }
+}
