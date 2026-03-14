@@ -32,6 +32,17 @@ document.addEventListener("keypress", function() {
     }
 });
 
+document.addEventListener("click", function (event) {
+    if (
+        started === false &&
+        !event.target.closest(".popup") &&
+        !event.target.closest(".btn")
+    ) {
+        started = true;
+        levelUp();
+    }
+});
+
 // Function to flash the button for the game sequence
 function gameFlash(btn) {
     btn.classList.add("flash");
@@ -69,13 +80,19 @@ function checkAns(idx) {
          } else {
             // Play mistake sound when the player makes a mistake
             mistakeSound.play();
+            
+            // Add red flash effect to the wrong button
+            let wrongBtn = document.querySelector(`#${userseq[idx]}`);
+    wrongBtn.classList.add("wrongflash");
+
+    setTimeout(() => {
+        wrongBtn.classList.remove("wrongflash");
+    }, 300); // Adjust duration as needed
                 
-            h2.innerHTML = `Game over! Your score was <b>${level}</b>. Press any key to start`;
+            h2.innerHTML = `Game over! Your score was <b>${level}</b>.`;
         
       // Add red flash effect by toggling the error-flash class
-            const body = document.querySelector("body");
-            body.classList.add("errorflash");
-            setTimeout(() => body.classList.remove("errorflash"), 1000); // Adjust duration as needed
+             // Adjust duration as needed
         
             
                 reset(); // Reset the game after a game over
